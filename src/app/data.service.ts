@@ -18,16 +18,27 @@ export class DataService {
   createTask(newTask: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/tasks`, newTask);
   }
-
+  
   updateTask(taskId: string, updatedTask: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/tasks/${taskId}`, updatedTask);
   }
-
+  
   deleteTask(taskId: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/tasks/${taskId}`);
   }
-
+  
   addElement(taskId: string, completed: any): Observable<any>{
     return this.http.post<any>(`${this.apiUrl}/tasks/${taskId}/completed`, {completed});
   }
+  
+  // User functions
+  
+  getUser(userEmail: any): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/users/${userEmail}`);
+  }
+  createUser(newUser: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}users`, newUser);
+  }
+
+
 }

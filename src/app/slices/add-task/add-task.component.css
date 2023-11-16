@@ -11,10 +11,6 @@
     border: none;
 }
 
-button:disabled{
-    opacity: 50%;
-}
-
 
 @media (max-height: 700px) {
     .overlay{

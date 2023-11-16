@@ -7,7 +7,7 @@ import { HeaderComponent } from './slices/header/header.component';
 import { FooterComponent } from './slices/footer/footer.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HomeComponent } from './pages/home/home.component';
-import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { SignUpComponent } from './pages/get-started/sign-up/sign-up.component';
 import { AddTaskComponent } from './slices/add-task/add-task.component';
 import { SearchComponent } from './slices/search/search.component';
 import { ProfileComponent } from './slices/profile/profile.component';
@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FilterService } from './services/filters.service';
 import { GetStartedComponent } from './pages/get-started/get-started.component';
 import { SignInComponent } from './pages/get-started/sign-in/sign-in.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SignInComponent } from './pages/get-started/sign-in/sign-in.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
 
   ],
   providers: [

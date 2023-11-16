@@ -1,16 +1,23 @@
 <main>
     <div class="py-12 px-10">
         <h1 class="mb-12">Get Started</h1>
-        <div class="flex flex-col gap-12">
-            <div class="flex flex-col gap-1 text-left">
-                <label for="email">Email:</label>
-                <input id="email" type="email"  placeholder="name@example.com"/> 
-            </div>
-            <div class="flex flex-col gap-5">
-                <button class="btn btn-pink" type="submit">Continue</button>
-                <p>or</p>
-                <button class="btn" type="button" routerLink="#">Google Acount</button>
-            </div>
-        </div>
+        @if(showGetStarted){
+            <form [formGroup]="userForm" (ngSubmit)="userHandleSubmit()" class="flex flex-col gap-7">
+                <div class="flex flex-col gap-1 text-left">
+                    <label for="email">Email:</label>
+                    <input formControlName="email" id="email" type="email"  placeholder="name@example.com"/> 
+                </div>
+                <div class="flex flex-col gap-4 mt-8">
+                    <button [disabled]="!userForm.valid" class="btn btn-pink" type="submit">Continue</button>
+                    <p>or</p>
+                    <button class="btn" type="button" routerLink="/test">Google Acount</button>
+                </div>
+            </form>
+        }
+        @if (showSignUp) {
+            <app-sign-up [user]="userForm.value.email" />
+        }
+
+
     </div>
 </main>

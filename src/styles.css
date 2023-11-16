@@ -93,3 +93,6 @@ input::placeholder, textarea::placeholder{
 }
 
 
+button:disabled{
+    opacity: 50%;
+}
