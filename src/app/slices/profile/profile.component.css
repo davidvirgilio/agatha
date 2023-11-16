@@ -1,0 +1,19 @@
+.input{
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+}
+.close{
+    top: -1.5rem;
+    right: -2em;
+}
+.border-agatha{
+    border: none;
+}
+@media (max-height: 700px) {
+    .overlay{
+        align-items: flex-start;
+        position: absolute;
+
+    }
+}

@@ -1,0 +1,22 @@
+<div class="relative overlay">
+    <nav class="bg-white p-10 rounded-b-xl absolute w-full">
+        <h3 class="text-left">Filter by</h3>
+        @for(section of data; track $index){
+            <section class="">
+                <h4 class="font-bold text-left my-4">{{section.title}}</h4>
+                <div class="flex flex-wrap gap-4">
+                    @for (button of section.filters; track $index) {
+                        <button (click)="filter(button.name)" class="filter capitalize" type="button"> {{ button.name }} </button>
+                    }
+                </div>
+            </section>
+        }
+        <div class="relative">
+            <button (click)="sendClose()" class="absolute p-2.5 close" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none" transform="rotate(180)">
+                    <path d="M3.88281 8L11.8828 16L19.8828 8" stroke="#DB374F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+</div>  

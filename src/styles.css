@@ -1,0 +1,95 @@
+@import url("https://use.typekit.net/uqh5dsr.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    box-sizing: border-box;
+}
+:root {
+    --Red-Agatha: #DB374F;
+    --Pink-Agatha: #FFD0CC;
+}
+html, body{
+    height: 100vh;
+}
+
+body{
+    color: var(--Red-Agatha);
+    font-family: "mendl-sans-dusk", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    min-width: 320px;
+    font-size: 1.125rem;
+}
+
+h1, h2, h3, label, button, .btn, legend {
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0.07813rem;
+}
+
+h1{
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+h2{
+    font-size: 2rem;
+}
+h3, legend{
+    font-size: 1.5rem;
+}
+
+.bg-pink-agatha{
+    background-color: var(--Pink-Agatha);
+}
+.bg-red-agatha{
+    background-color: var(--Red-Agatha);
+}
+
+.red-agatha{
+    color: var(--Red-Agatha) !important;
+}
+
+
+
+.border-agatha{
+    border: 0.2rem solid var(--Red-Agatha);
+    border-radius: 0.625rem; 
+}
+
+.btn{
+    display: flex;
+    padding: 0.625rem 1.25rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    width: fit-content;
+    min-width: 19rem;
+    border-radius: 0.3125rem;
+    margin: 0 auto;
+    cursor: pointer;
+    background-color: var(--Red-Agatha);
+    color: #ffffff;
+}
+.btn-pink{
+    background-color: var(--Pink-Agatha);
+    color: var(--Red-Agatha);
+}
+
+input, select, textarea{
+    border: 1px solid var(--Red-Agatha);
+    border-radius: 0.25rem;
+    padding: 0.250rem 0.9375rem;
+}
+.black{
+    color: #000;
+}
+input::placeholder, textarea::placeholder{
+    font-weight: 200;
+}
+
+

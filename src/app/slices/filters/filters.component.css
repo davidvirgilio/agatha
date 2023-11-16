@@ -1,0 +1,25 @@
+.close{
+    top: -1rem;
+    right: -1em;
+}
+.overlay{
+    /* bottom: 19rem; */
+}
+.filter{
+    display: flex;
+    padding: 0.4rem 1.25rem;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    border-radius: 0.625rem;
+    cursor: pointer;
+    color: var(--Red-Agatha);
+    border: 2px solid var(--Red-Agatha);
+    font-weight: 600;
+}
+
+.active, .filter:hover{
+    background: var(--Red-Agatha);
+    color: #FFFFFF;
+    transition: all 0.8s ease;
+}

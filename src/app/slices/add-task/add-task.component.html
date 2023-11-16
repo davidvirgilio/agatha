@@ -1,0 +1,42 @@
+<div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-25 overlay">
+    <div class="bg-pink-agatha w-max px-14 pt-11 pb-16 border-agatha">
+        <div class="flex justify-between relative">
+            <h2 class="mb-10"> {{ title }}</h2>
+            <button (click)="sendClose()" (escape)="sendClose()" class="absolute p-2.5 close" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.325437 0.325437C0.759353 -0.108479 1.46287 -0.108479 1.89679 0.325437L10 8.42865L18.1032 0.325438C18.5371 -0.108478 19.2406 -0.108478 19.6746 0.325438C20.1085 0.759354 20.1085 1.46287 19.6746 1.89679L11.5713 10L19.6746 18.1032C20.1085 18.5371 20.1085 19.2406 19.6746 19.6746C19.2406 20.1085 18.5371 20.1085 18.1032 19.6746L10 11.5713L1.89679 19.6746C1.46287 20.1085 0.759353 20.1085 0.325437 19.6746C-0.108479 19.2406 -0.108479 18.5371 0.325437 18.1032L8.42865 10L0.325437 1.89679C-0.108479 1.46287 -0.108479 0.759353 0.325437 0.325437Z" fill="#DB374F"/>
+                </svg>
+            </button>
+        </div>
+        <form [formGroup]="taskForm" (ngSubmit)="handleSubmit()" class="flex flex-col gap-7">
+            <div class="input flex-col gap-2">
+                <label for="task-name">Task Name</label>
+                <input formControlName="name" type="text" id="task-name" class="w-full" placeholder="Add the name of your task" focused/> 
+            </div>
+            <div class="input flex-col flex gap-2">
+                <label for="description" class="block">Description</label>
+                <textarea formControlName="description" id="description" name="description" rows="5" maxlength="200" placeholder="Add a description (max. 200 characters)">
+                </textarea>
+            </div>
+            <div class="input">
+                <label for="due-date">Due date:</label>
+                <input formControlName="dueDate" id="due-date" type="date" /> 
+            </div>
+            <div class="input">
+                <label for="priority" class="mr-5">Priority</label>
+                <select formControlName="priority" name="priority" id="priority">
+                    <option value="low" name="priority">Low</option>
+                    <option value="medium" selected name="priority">Normal</option>
+                    <option value="high"name="priority">High</option>
+                    <option value="urgent"name="priority">Urgent</option>
+                </select>
+            </div>
+            <button type="submit" [disabled]="!taskForm.valid" class="btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                    <path d="M7.875 1.375C7.875 0.891751 7.48325 0.5 7 0.5C6.51675 0.5 6.125 0.891751 6.125 1.375V6.625H0.875C0.391751 6.625 0 7.01675 0 7.5C0 7.98325 0.391751 8.375 0.875 8.375L6.125 8.375V13.625C6.125 14.1082 6.51675 14.5 7 14.5C7.48325 14.5 7.875 14.1082 7.875 13.625V8.375L13.125 8.375C13.6082 8.375 14 7.98325 14 7.5C14 7.01675 13.6082 6.625 13.125 6.625H7.875V1.375Z" fill="#fff"/>
+                </svg>
+                {{ buttonCopy }}
+            </button>
+        </form>
+    </div>
+</div>

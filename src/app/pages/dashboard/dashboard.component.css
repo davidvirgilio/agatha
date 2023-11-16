@@ -1,0 +1,6 @@
+.dashboard{
+    min-height: 25rem;
+    height: calc(100vh - 17rem);
+    overflow-y: scroll;
+}
+
