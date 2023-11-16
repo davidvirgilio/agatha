@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DataService } from '../../data.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 import { tap } from 'rxjs/operators';
 
 @Component({

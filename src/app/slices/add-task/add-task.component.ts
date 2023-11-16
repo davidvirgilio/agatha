@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DataService } from '../../data.service';
-import { RefreshService } from '../../pages/dashboard/refresh.service';
+import { RefreshService } from '../../services/refresh.service';
 import { error } from 'console';
 import { send } from 'process';
 
@@ -54,7 +54,7 @@ ngOnInit(){
     const taskId = this.taskData._id;
     this.dataService.updateTask(taskId, updatedTask).subscribe(()=>{
       this.sendClose();
-      this.refreshService.triggerRefreshData();
+      this.refreshService.triggerRefreshData('all');
     },(error)=>{
       console.error('Error Updating the task.', error)
     });
@@ -62,7 +62,7 @@ ngOnInit(){
     const newTask = this.taskForm.value;
     this.dataService.createTask(newTask).subscribe(()=>{
         this.sendClose();
-        this.refreshService.triggerRefreshData();
+        this.refreshService.triggerRefreshData('all');
         console.log(newTask.dueDate)
     },(error)=>{
       console.error('Error adding the new task', error);

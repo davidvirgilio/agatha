@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FilterService } from '../../services/filters.service';
-
+import { RefreshService } from '../../services/refresh.service';
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
@@ -11,10 +10,10 @@ export class FiltersComponent {
     {
       title: 'Due Date',
       filters: [
+        { name: 'all' },
         { name: 'today' },
         { name: 'tomorrow' },
         { name: 'next week' },
-        { name: 'next month' },
       ]
     },
     {
@@ -28,10 +27,11 @@ export class FiltersComponent {
     },
   ]
 
-  constructor(private filterService: FilterService){}
+  constructor(private refreshService: RefreshService){}
 
-  filter(type: string){
-    this.filterService.sendFilter(type)
+  triggerFilter(type: string){
+    this.refreshService.triggerRefreshData(type);
+    this.sendClose();
   }
 
   @Output() closeEvent = new EventEmitter<boolean>();

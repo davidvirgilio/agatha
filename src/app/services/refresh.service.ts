@@ -6,11 +6,11 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class RefreshService {
 
-  private refresh = new BehaviorSubject<boolean>(false);
+  private refresh = new BehaviorSubject<string>('');
 
   refreshData$ = this.refresh.asObservable();
 
-  triggerRefreshData(){
-    this.refresh.next(true);
+  triggerRefreshData(filter: string){
+    this.refresh.next(filter);
   }
 }

@@ -15,8 +15,8 @@ export class SignUpComponent {
   signUpForm = new FormGroup({
     email: new FormControl(''),
     username: new FormControl('', Validators.required),
-    password: new FormControl('', [Validators.required]),
-    confirmPassword: new FormControl('', Validators.required),
+    password: new FormControl('', [Validators.required, Validators.min(6)]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.min(6)]),
 
   });
 
@@ -28,7 +28,9 @@ handleSubmit(){
   const newUser = this.signUpForm.value;
   delete newUser.confirmPassword;
   newUser.email = this.user;
-  console.log(newUser)
+
+  //Still I have to hash the password. It's not recommended doing it from the client-side. Something to add to the back-end later.
+
   this.dataService.createUser(newUser).subscribe(()=>{
     console.log('New user created')
   },(error)=>{

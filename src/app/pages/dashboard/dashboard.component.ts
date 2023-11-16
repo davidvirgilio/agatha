@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService } from '../../data.service';
-import { RefreshService } from './refresh.service';
+import { RefreshService } from '../../services/refresh.service';
 import { Subscription } from 'rxjs';
 import { FilterService } from '../../services/filters.service';
 import { error } from 'node:console';
@@ -25,21 +25,21 @@ closeAddTask(close: boolean){
   this.showModify = close;
 }
 
-
+  filter: string = 'today';
   tasks: any[] = [];
 
 private dataSubscription: Subscription
 
+ngOnInit():void {
+  this.callData(this.filter)
+}
   constructor(private dataService: DataService, private refreshService: RefreshService) {
-    this.dataSubscription = this.refreshService.refreshData$.subscribe(()=>{
-      this.callData('initial');
+    this.dataSubscription = this.refreshService.refreshData$.subscribe((filter:string)=>{
+      this.callData(filter);
     });
   }
   
-  ngOnInit():void {
-    this.callData('initial')
-  }
-
+  
 ngOnDestroy(): void {
     this.dataSubscription.unsubscribe;
 }
@@ -47,48 +47,50 @@ ngOnDestroy(): void {
 callData(type: string){
 
   this.dataService.getTasks().subscribe((data:any[])=>{
-  if(type === 'initial'){
-  
-      
-      
-      // Getting today and tomorrow's tasks
-      const today = new Date();
-      
-      const tomorrow = new Date();
-      tomorrow.setDate(today.getDate() + 1);
-      
-      const todayData = this.filter(data, today)
-      const tomorrowData = this.filter(data, tomorrow)
-      const thisWeek = this.sortByDate(this.filterByWeek(data, today));
-      const all = this.sortByDate(data)
+  switch(type){
+    case "all":
+      this.showAll(data)
+      break
+    case "today":
+      this.showToday(data)
+      break
+    case "tomorrow":
+      this.showTomorrow(data)
+      break
+    case "this week":
+      this.showThisWeek(data)
+      break
+    }
+})
+}
+showAll(data: any){
+  const all = this.sortByDate(data)
+  this.insertDataToDashboard('All Tasks', all);
+}
 
-      const array = [];
 
-      this.insertDataToDashboard('Today',todayData);
-      this.insertDataToDashboard('Tomorrow',tomorrowData);
-      this.insertDataToDashboard('This Week', thisWeek);
-      this.insertDataToDashboard('All', all);
+showToday(data: any){
+  const today = new Date();
+  const todayData = this.filterBy(data, today)
+  this.insertDataToDashboard('Today',todayData);
+}
 
-        
-      }else{
+showTomorrow(data: any){
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const tomorrowData = this.filterBy(data, tomorrow)
+  this.insertDataToDashboard('Tomorrow',tomorrowData);
+}
 
-        
-      }
-    })
-  }
-  
-  
-insertDataToDashboard(title: string, data: any[]){
+showThisWeek(data: any){
+  const today = new Date();
+  const thisWeek = this.sortByDate(this.filterByWeek(data, today));
+  this.insertDataToDashboard('This Week', thisWeek);
+}
+
+insertDataToDashboard(title: string, data: any){
   if(data.length !== 0){
-    const insertTasks = {title: title, array: data};
-    const index = this.tasks.findIndex(task => task.title === title);
-    console.log(this.tasks)
-    console.log(index)
-    if(index !== -1){
-      this.tasks.splice(index,1,insertTasks);
-    }else{
-      this.tasks.push(insertTasks);
-    }    
+    this.tasks = [{title: title, array: data}];
   }
 }  
   
@@ -98,7 +100,7 @@ insertDataToDashboard(title: string, data: any[]){
 deleteTask(id: string){
   this.dataService.deleteTask(id).subscribe((res)=>{
     console.log('Task ' + id + 'successfully deleted.' )
-    this.callData('initial');
+    this.callData('all');
 
   });
 }
@@ -134,7 +136,7 @@ sortByDate(dataArray: any[]){
 
 // Functions to filter the data by an specific date.
 
-filter(array: any[], date: Date){
+filterBy(array: any[], date: Date){
   const dateFormat = this.formatDate(date);
 
   const filteredByDay = array.filter((item)=>{

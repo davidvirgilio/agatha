@@ -6,7 +6,7 @@
                 <h4 class="font-bold text-left my-4">{{section.title}}</h4>
                 <div class="flex flex-wrap gap-4">
                     @for (button of section.filters; track $index) {
-                        <button (click)="filter(button.name)" class="filter capitalize" type="button"> {{ button.name }} </button>
+                        <button (click)="triggerFilter(button.name)" class="filter capitalize" type="button"> {{ button.name }} </button>
                     }
                 </div>
             </section>

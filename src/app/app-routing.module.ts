@@ -8,12 +8,12 @@ import { SignInComponent } from './pages/get-started/sign-in/sign-in.component';
 
 const routes: Routes = [
       {
-          path: 'home',
+          path: '',
           title: 'Welcome | Agatha',
           component: HomeComponent,
       },
       {
-          path: '',
+          path: 'dashboard',
           title: 'Dashboard',
           component: DashboardComponent,
       },
