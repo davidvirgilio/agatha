@@ -37,7 +37,7 @@ export class DataService {
     return this.http.get<any>(`${this.apiUrl}/users/${userEmail}`);
   }
   createUser(newUser: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}users`, newUser);
+    return this.http.post<any>(`${this.apiUrl}/users`, newUser);
   }
 
 

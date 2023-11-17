@@ -17,6 +17,8 @@ import { FilterService } from './services/filters.service';
 import { GetStartedComponent } from './pages/get-started/get-started.component';
 import { SignInComponent } from './pages/get-started/sign-in/sign-in.component';
 import { FormsModule } from '@angular/forms';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,6 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-
   ],
   providers: [
     provideClientHydration(),
@@ -50,4 +51,6 @@ import { FormsModule } from '@angular/forms';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+ }
