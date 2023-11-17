@@ -1,6 +1,10 @@
 <div class="flex p-10 flex-col bg-pink-agatha">
-    <div class="flex p-10 gap-8 flex-col border-agatha dashboard">
+    <main class="flex p-10 gap-8 flex-col border-agatha dashboard container max-w-xl">
             <div class="flex flex-col gap-6">
+                    @if(isEmpty){
+                        <h1>We're sorry</h1>
+                        <p class="text-2xl">You have not tasks in your dashboard. Add one or try use other filter.</p>
+                    }
                     @for (day of tasks; track $index) {
                     <div>
                         <h3 class="mb-2.5 uppercase">{{ day.title }}</h3>
@@ -47,8 +51,8 @@
                     }
 
             </div>
-        </div>
-</div>
+        </main>
+    </div>
 <app-footer />
 
 @if(showModify) {   

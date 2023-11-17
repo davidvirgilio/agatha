@@ -37,6 +37,7 @@ handleSubmit(){
         this.message = "";
       }else{
         this.message = "Wrong Password"
+        this.logInForm.value.password ="";
       }
       console.log(user.password)
 

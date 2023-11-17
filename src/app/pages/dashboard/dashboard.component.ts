@@ -12,6 +12,8 @@ import { error } from 'node:console';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
 
+isEmpty: boolean = false;
+
 showModify = false;
 taskData = [];
 isEditMode = true;
@@ -33,6 +35,7 @@ private dataSubscription: Subscription
 ngOnInit():void {
   this.callData(this.filter)
 }
+
   constructor(private dataService: DataService, private refreshService: RefreshService) {
     this.dataSubscription = this.refreshService.refreshData$.subscribe((filter:string)=>{
       this.callData(filter);
@@ -48,21 +51,36 @@ callData(type: string){
 
   this.dataService.getTasks().subscribe((data:any[])=>{
   switch(type){
+
     case "all":
-      this.showAll(data)
-      break
+    this.showAll(data);
+    this.isEmpty = false;
+    break
+
     case "today":
-      this.showToday(data)
-      break
+    this.showToday(data)
+    this.isEmpty = false;
+
+    break
     case "tomorrow":
-      this.showTomorrow(data)
-      break
+    this.showTomorrow(data)
+    this.isEmpty = false;
+
+    break
     case "this week":
-      this.showThisWeek(data)
-      break
+    this.showThisWeek(data)
+    this.isEmpty = false;
+    break
+
+    default:
+      this.isEmpty = true;
     }
 })
 }
+
+
+
+
 showAll(data: any){
   const all = this.sortByDate(data)
   this.insertDataToDashboard('All Tasks', all);
@@ -93,8 +111,6 @@ insertDataToDashboard(title: string, data: any){
     this.tasks = [{title: title, array: data}];
   }
 }  
-  
-
 
 
 deleteTask(id: string){
@@ -120,8 +136,6 @@ toggleDone(task: any){
 }
 
 sortByDate(dataArray: any[]){
-
-  
   
   const data = dataArray.sort((a,b)=>{
     const A = new Date(a.dueDate);

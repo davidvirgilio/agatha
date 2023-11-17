@@ -1,27 +1,24 @@
-# Test
+# AGATHA: TASK MANAGER
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+This project was generated with Angular CLI version 17.0.0, which posed a significant challenge considering the short timeframe of just a couple of weeks. Although I initially began developing the app using version 16, I made the decision to proceed with the latest version.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Development
 
-## Code scaffolding
+While working on the development, I found it easy to get confused about which part of my code was responsible for the back-end. I also found it easy to split the files into two repositories, deploying each on a different platform to keep everything more organized.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This is the front-end project developed with Angular and Tailwind. You can find the back-end files at: https://github.com/davidvirgilio/
 
-## Build
+## Install dependencies
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To run the application create a Codespace in the green button in the top right side of this page.
 
-## Running unit tests
+Once in the Codespace run `npm install` to install all the dependencies.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Then install the Angular CLI with `npm install -g @angular/cli`.
 
-## Running end-to-end tests
+## Run the application
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run `ng serve -o` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The back-end runs in an Azure server: https://agatha-task.azurewebsites.net/tasks

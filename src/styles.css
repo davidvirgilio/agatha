@@ -43,6 +43,11 @@ h3, legend{
     font-size: 1.5rem;
 }
 
+main{
+    /* max-width: 600px; */
+    margin: 0 auto;
+}
+
 .bg-pink-agatha{
     background-color: var(--Pink-Agatha);
 }

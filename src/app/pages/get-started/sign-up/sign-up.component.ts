@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from '../../../data.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -20,7 +22,7 @@ export class SignUpComponent {
 
   });
 
-constructor(private dataService: DataService){}
+constructor(private dataService: DataService, private router: Router){}
 
 
 handleSubmit(){
@@ -33,6 +35,8 @@ handleSubmit(){
 
   this.dataService.createUser(newUser).subscribe(()=>{
     console.log('New user created')
+    this.router.navigate(['dashboard'])
+
   },(error)=>{
     console.error('Error adding the new user', error);
   });
