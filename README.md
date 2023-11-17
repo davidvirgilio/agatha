@@ -7,7 +7,7 @@ This project was generated with Angular CLI version 17.0.0, which posed a signif
 
 While working on the development, I found it easy to get confused about which part of my code was responsible for the back-end. I also found it easy to split the files into two repositories, deploying each on a different platform to keep everything more organized.
 
-This is the front-end project developed with Angular and Tailwind. You can find the back-end files at: https://github.com/davidvirgilio/
+This is the front-end project developed with Angular and Tailwind. You can find the back-end files at: https://github.com/davidvirgilio/back-end
 
 ## Install dependencies
 
