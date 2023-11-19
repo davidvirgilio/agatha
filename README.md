@@ -2,7 +2,7 @@
 
 This project was generated with Angular CLI version 17.0.0, which posed a significant challenge considering the short timeframe of just a couple of weeks. Although I initially began developing the app using version 16, I made the decision to proceed with the latest version.
 
-You can find the site running at https://agatha.davidvirgilio.me
+You can find the site running at https://agatha.davidvirgilio.me and https://agatha-psi.vercel.app/
 
 
 ## Development
